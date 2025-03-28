@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Checker - TECH TRIBE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes matrix {
+            0% { background-position: 0 0; }
+            100% { background-position: 1000px 1000px; }
+        }
+
+        body {
+            background-color: black;
+            background-image: url('https://i.imgur.com/Y7ZFu3X.gif'); /* Hacker Matrix Effect */
+            background-size: cover;
+            animation: matrix 20s linear infinite;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        .container {
+            max-width: 400px;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px #00ff00;
+            animation: flicker 1.5s infinite alternate;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #00ff00;
+            text-shadow: 0px 0px 10px #00ff00, 0px 0px 20px #008000;
+            animation: flicker 2s infinite alternate;
+        }
+
+        input {
+            background-color: black;
+            border: 1px solid #00ff00;
+            color: #00ff00;
+        }
+
+        input:focus {
+            box-shadow: 0px 0px 10px #00ff00;
+        }
+
+        .message {
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            border-right: 2px solid #00ff00;
+            animation: typing 3s steps(40, end) 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">TECH TRIBE</div>
+        <h2>Password Strength Checker</h2>
+        <form method="POST">
+            <input type="password" name="password" class="form-control" placeholder="Enter password" required>
+            <button type="submit" class="btn btn-success w-100">Check</button>
+        </form>
+        {% if message %}
+            <p class="message mt-3">{{ message }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
